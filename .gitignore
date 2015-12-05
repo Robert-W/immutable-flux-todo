@@ -1,0 +1,9 @@
+# Ignore the build and dist directories
+public
+vendor
+
+# Ignore these, just do it
+node_modules
+npm-debug.log
+.DS_Store
+.idea
