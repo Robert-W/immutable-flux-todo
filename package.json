@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "gulp start & gulp server",
-    "prod": "NODE_ENV=production; gulp production; webpack -p --config webpack.production.js;",
+    "prod": "NODE_ENV=production; gulp production; webpack -p -d --config webpack.production.js;",
     "webpack-watch": "webpack -p -d --watch",
     "postinstall": "bower install",
     "test": "echo \"Error: no test specified\" && exit 1"

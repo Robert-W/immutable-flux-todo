@@ -14,7 +14,7 @@ module.exports = {
     publicPath: '/js/'
   },
   module: {
-    noParse: [path.join(__dirname, 'vendor/react/react.min.js')],
+    // noParse: [path.join(__dirname, 'vendor/react/react.min.js')],
     loaders: [{
       test: /\.js?$/,
       loader: 'react-hot',
@@ -33,8 +33,8 @@ module.exports = {
     alias: {
       'js': path.join(__dirname, 'src/js'),
       'components': path.join(__dirname, 'src/js/components'),
-      'react-lib': path.join(__dirname, 'vendor/react/react.min'),
-      'react-dom': path.join(__dirname, 'vendor/react/react-dom.min')
+      'react-lib': path.join(__dirname, 'node_modules/react/react'),
+      'react-dom': path.join(__dirname, 'node_modules/react/lib/ReactDOM')
     }
   },
   plugins: [

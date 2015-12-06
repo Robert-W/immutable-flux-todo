@@ -1,9 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: [
-    path.join(__dirname, 'src/js/main.js')
-  ],
+  entry: path.join(__dirname, 'src/js/main.js'),
   output: {
     path: path.resolve('dist/js'),
     filename: 'bundle.js'
@@ -24,6 +22,7 @@ module.exports = {
     alias: {
       'js': path.join(__dirname, 'src/js'),
       'components': path.join(__dirname, 'src/js/components'),
+      'react': path.join(__dirname, 'vendor/react/react.min'),
       'react-lib': path.join(__dirname, 'vendor/react/react.min'),
       'react-dom': path.join(__dirname, 'vendor/react/react-dom.min')
     }

@@ -1,6 +1,6 @@
 /*eslint-disable no-unused-expressions */
 import ReactDOM from 'react-dom';
-import React from 'react';
+import React from 'react-lib';
 
 let timeoutDuration = 1500,
     timer;
