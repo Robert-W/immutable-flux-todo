@@ -1,0 +1,115 @@
+$darkGray = rgba(55, 55, 55, 0.3)
+$checkmarkFill = #00ffff
+$footerFontColor = #888
+$closeFill = #ff1744
+$rowEmHeight = 25px
+$lightGray = #ddd
+$downFill = #eee
+
+*
+*:before
+*:after
+  -webkit-tap-highlight-color rgba(0, 0, 0, 0)
+  -webkit-font-smoothing antialiased
+  box-sizing border-box
+
+.pointer
+  cursor pointer
+
+.todo-app
+  background-color $lightGray
+  flex-direction column
+  display flex
+
+.todo-app-header
+  margin 20px auto
+  font-weight 500
+  font-size 80px
+
+.todo-app-footer
+  color $footerFontColor
+  margin 20px auto
+  font-size 11px
+  & a
+    color $footerFontColor
+    text-decoration none
+    &:hover
+      text-decoration underline
+
+.todo-app-body
+  box-shadow 0 2px 4px $darkGray, 0 25px 50px $darkGray
+  background-color white
+  margin 0 auto
+  width 550px
+
+input
+  -webkit-appearance none
+  font-size $rowEmHeight
+  border none
+  height 100%
+  width 100%
+  &:focus
+    outline none
+    height 100%
+    width 100%
+
+.flex-row
+  flex-direction row
+  font-size $rowEmHeight
+  display flex
+  height 2em
+  & *
+    transition all 0.25s ease
+
+.svg-icon-container
+  display flex
+  height 100%
+  width 50px
+
+.svg-icon
+  margin auto
+  height 20px
+  width 20px
+
+.todo-new-item
+  border-bottom 1px solid darken($lightGray, 25)
+  height 2em
+  width 100%
+  & .new-todo
+    position relative
+    font-size 22px
+    height 100%
+    width 100%
+  & .icon-down-arrow
+    fill $lightGray
+  &.active
+    & .icon-down-arrow
+      fill darken($lightGray, 25)
+
+.todo-edit-item
+  height 2em
+  width 100%
+  & .circle
+    border 1px solid $lightGray
+    border-radius 50%
+    display flex
+    margin auto
+    height 30px
+    width 30px
+  & .icon-checkmark
+    fill $lightGray
+    height 15px
+  & .edit-item
+    font-size 20px
+  &.active
+    & .circle
+      border 1px solid darken($lightGray, 25)
+    & .icon-checkmark
+      fill darken($checkmarkFill, 5)
+    & .edit-item
+      text-decoration line-through
+      color $lightGray
+  & .icon-close
+    fill $closeFill
+    &:hover
+      fill darken($closeFill, 20)

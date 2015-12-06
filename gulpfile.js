@@ -1,14 +1,18 @@
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpackConfig = require('./webpack.config');
+var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync');
+var stylus = require('gulp-stylus');
 var webpack = require('webpack');
 var gulp = require('gulp');
 
 var compiler = webpack(webpackConfig);
 
-gulp.task('copy-css', function () {
-  return gulp.src(['src/css/**/*.css'])
+gulp.task('stylus', function () {
+  return gulp.src(['src/css/app.styl'])
+    .pipe(stylus({ linenos: true }))
+    .pipe(autoprefixer())
     .pipe(gulp.dest('public/css'));
 });
 
@@ -18,11 +22,11 @@ gulp.task('copy-html', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('src/css/**/*.css', ['copy-css']);
+  gulp.watch('src/**/*.styl', ['stylus']);
   gulp.watch('src/**/*.html', ['copy-html']);
 });
 
-gulp.task('start', ['copy-css', 'copy-html', 'watch']);
+gulp.task('start', ['stylus', 'copy-html', 'watch']);
 
 gulp.task('server', function () {
   browserSync({
