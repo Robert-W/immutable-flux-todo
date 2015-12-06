@@ -101,6 +101,13 @@ input
     height 15px
   & .edit-item
     font-size 20px
+  & .icon-close
+    visibility hidden
+    fill $closeFill
+  &:hover .icon-close
+    visibility visible
+  &:hover .icon-close:hover
+    fill darken($closeFill, 20)
   &.active
     & .circle
       border 1px solid darken($lightGray, 25)
@@ -109,7 +116,3 @@ input
     & .edit-item
       text-decoration line-through
       color $lightGray
-  & .icon-close
-    fill $closeFill
-    &:hover
-      fill darken($closeFill, 20)
