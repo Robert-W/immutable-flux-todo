@@ -1,6 +1,7 @@
 # Ignore the build and dist directories
 public
 vendor
+dist
 
 # Ignore these, just do it
 node_modules

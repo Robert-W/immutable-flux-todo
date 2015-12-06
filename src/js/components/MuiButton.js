@@ -1,4 +1,5 @@
 /*eslint-disable no-unused-expressions */
+import ReactDOM from 'react-dom';
 import React from 'react';
 
 let timeoutDuration = 1500,
@@ -38,13 +39,13 @@ export default class MuiButton extends React.Component {
   }
 
   animate (evt) {
-    let target = React.findDOMNode(this);
+    let target = ReactDOM.findDOMNode(this);
     let size = Math.max(target.clientHeight, target.clientWidth);
     let left = evt.pageX - target.offsetLeft - (size / 2);
     let top = evt.pageY - target.offsetTop - (size / 2);
     let ripples = this.state.ripples;
     //- Push the ripple node into the stack
-    ripples.push(<Ripple top={top} left={left} size={size} />);
+    ripples.push(<Ripple key={ripples.length} top={top} left={left} size={size} />);
     this.setState({ ripples: ripples });
     //- Remove this animation once completed
     clearTimeout(timer);
@@ -74,7 +75,7 @@ class Ripple extends React.Component {
   }
 
   componentDidMount() {
-    let node = React.findDOMNode(this);
+    let node = ReactDOM.findDOMNode(this);
     //- Force the default styles to take effect, simply reading a value from
     //- computed style will flush pending changes so they are applied
     window.getComputedStyle(node).opacity;
