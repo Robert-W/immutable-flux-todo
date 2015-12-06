@@ -1,4 +1,4 @@
-import React from 'react-lib';
+import React from 'react';
 
 let downArrowSVG = '<use xlink:href="#icon-arrow" />';
 

@@ -1,6 +1,6 @@
 import TodoApp from 'components/TodoApp';
 import ReactDOM from 'react-dom';
-import React from 'react-lib';
+import React from 'react';
 
 let loadApp = function loadApp () {
   ReactDOM.render(<TodoApp />, document.getElementById('root'));

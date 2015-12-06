@@ -21,10 +21,14 @@ module.exports = {
   resolve: {
     alias: {
       'js': path.join(__dirname, 'src/js'),
+      'stores': path.join(__dirname, 'src/js/stores'),
+      'actions': path.join(__dirname, 'src/js/actions'),
       'components': path.join(__dirname, 'src/js/components'),
+      // Vendor Modules
+      'alt': path.join(__dirname, 'vendor/alt/dist/alt.min'),
       'react': path.join(__dirname, 'vendor/react/react.min'),
-      'react-lib': path.join(__dirname, 'vendor/react/react.min'),
-      'react-dom': path.join(__dirname, 'vendor/react/react-dom.min')
+      'react-dom': path.join(__dirname, 'vendor/react/react-dom.min'),
+      'immutable': path.join(__dirname, 'vendor/immutable/dist/immutable.min')
     }
   }
 };

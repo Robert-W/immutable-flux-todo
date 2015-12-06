@@ -1,12 +1,22 @@
 import StatusBar from 'components/StatusBar';
 import TodoInput from 'components/TodoInput';
 import TodoItem from 'components/TodoItem';
-import React from 'react-lib';
+import TodoStore from 'stores/TodoStore';
+import React from 'react';
+
+let getAppState = () => TodoStore.getState();
 
 export default class App extends React.Component {
 
   constructor (props) {
     super(props);
+    //- Get default state
+    this.state = getAppState();
+    TodoStore.listen(::this.storeUpdated);
+  }
+
+  storeUpdated () {
+    console.log('store updated');
   }
 
   render () {

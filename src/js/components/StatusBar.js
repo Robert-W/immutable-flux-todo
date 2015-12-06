@@ -1,5 +1,5 @@
 import MuiButton from 'components/MuiButton';
-import React from 'react-lib';
+import React from 'react';
 
 let arrowSVG = '<use xlink:href="#icon-arrow" />';
 

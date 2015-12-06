@@ -32,9 +32,14 @@ module.exports = {
   resolve: {
     alias: {
       'js': path.join(__dirname, 'src/js'),
+      'stores': path.join(__dirname, 'src/js/stores'),
+      'actions': path.join(__dirname, 'src/js/actions'),
       'components': path.join(__dirname, 'src/js/components'),
-      'react-lib': path.join(__dirname, 'node_modules/react/react'),
-      'react-dom': path.join(__dirname, 'node_modules/react/lib/ReactDOM')
+      // Vendor or node_modules
+      'react': path.join(__dirname, 'node_modules/react'),
+      'alt': path.join(__dirname, 'vendor/alt/dist/alt.min'),
+      'react-dom': path.join(__dirname, 'node_modules/react/lib/ReactDOM'),
+      'immutable': path.join(__dirname, 'vendor/immutable/dist/immutable.min')
     }
   },
   plugins: [
