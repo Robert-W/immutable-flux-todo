@@ -1,6 +1,7 @@
-$darkGray = rgba(55, 55, 55, 0.3)
+$darkGrayShadow = rgba(55, 55, 55, 0.3)
 $checkmarkFill = #00ffff
 $footerFontColor = #888
+$darkFontColor = #777
 $closeFill = #ff1744
 $rowEmHeight = 25px
 $lightGray = #ddd
@@ -36,8 +37,8 @@ $downFill = #eee
     &:hover
       text-decoration underline
 
-.todo-app-body
-  box-shadow 0 2px 4px $darkGray, 0 25px 50px $darkGray
+.todo-notepad
+  box-shadow 0 2px 4px $darkGrayShadow, 0 25px 50px $darkGrayShadow
   background-color white
   margin 0 auto
   width 550px
@@ -62,9 +63,9 @@ input
     transition all 0.25s ease
 
 .svg-icon-container
+  min-width 50px
   display flex
   height 100%
-  width 50px
 
 .svg-icon
   margin auto
@@ -87,6 +88,7 @@ input
       fill darken($lightGray, 25)
 
 .todo-edit-item
+  border-bottom 1px solid $lightGray
   height 2em
   width 100%
   & .circle
@@ -100,6 +102,7 @@ input
     fill $lightGray
     height 15px
   & .edit-item
+    font-weight 200
     font-size 20px
   & .icon-close
     visibility hidden
@@ -116,3 +119,44 @@ input
     & .edit-item
       text-decoration line-through
       color $lightGray
+
+.status-bar
+  & button
+    -webkit-appearance none
+    color $darkFontColor
+    background none
+    outline none
+    padding 5px
+    border none
+    &:hover
+      box-shadow 0 0 5px darken($darkGrayShadow, 20)
+    &:active
+      box-shadow 0 0 15px $darkGrayShadow
+  & .state-button
+    border-radius 5px
+    margin auto 7px
+    padding 3px
+  & .corner-item
+    font-size 12px
+    margin auto 0
+    width auto
+  & .remaining-count
+    color $darkFontColor
+    padding-left 10px
+  & .filters
+    justify-content center
+    display flex
+    height 100%
+    width 100%
+  & .filter-button
+    padding 10px 15px
+    margin auto 15px
+  & .icon-previous
+    transform rotate(90deg)
+    fill $footerFontColor
+  & .icon-next
+    transform rotate(-90deg)
+    fill $footerFontColor
+  & .clear-button
+    margin-right 5px
+    text-align left

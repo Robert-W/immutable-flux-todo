@@ -1,6 +1,6 @@
 import React from 'react-lib';
 
-let downArrowSVG = '<use xlink:href="#icon-down-arrow" />';
+let downArrowSVG = '<use xlink:href="#icon-arrow" />';
 
 export default class TodoInput extends React.Component {
 
