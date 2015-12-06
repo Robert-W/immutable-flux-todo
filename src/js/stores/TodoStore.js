@@ -1,6 +1,10 @@
 import TodoActions from 'actions/TodoActions';
 import alt from 'js/alt';
 
+//- Crappy UUID Generator but it works for this demo
+let uuid = 0;
+let uuidGenerator = () => (++uuid).toString();
+
 class TodoStore {
 
   constructor () {
@@ -10,20 +14,24 @@ class TodoStore {
 
     // Bind events for this.emit from the actions
     this.bindListeners({
+      undo: TodoActions.undo,
+      redo: TodoActions.redo,
       addTodo: TodoActions.addTodo,
       editTodo: TodoActions.editTodo,
+      setFilter: TodoActions.setFilter,
       removeTodo: TodoActions.removeTodo,
-      markTodoNew: TodoActions.markTodoNew,
-      markTodoComplete: TodoActions.markTodoComplete,
-      markAllNew: TodoActions.markAllNew,
-      markAllCompleted: TodoActions.markAllCompleted,
-      showAll: TodoActions.showAll,
-      showNew: TodoActions.showNew,
-      showCompleted: TodoActions.showCompleted,
       clearCompleted: TodoActions.clearCompleted,
-      undo: TodoActions.undo,
-      redo: TodoActions.redo
+      toggleComplete: TodoActions.toggleComplete,
+      toggleAllComplete: TodoActions.toggleAllComplete
     });
+  }
+
+  undo () {
+
+  }
+
+  redo () {
+
   }
 
   addTodo () {
@@ -34,35 +42,11 @@ class TodoStore {
 
   }
 
+  setFilter () {
+
+  }
+
   removeTodo () {
-
-  }
-
-  markTodoNew () {
-
-  }
-
-  markTodoComplete () {
-
-  }
-
-  markAllNew () {
-
-  }
-
-  markAllCompleted () {
-
-  }
-
-  showAll () {
-
-  }
-
-  showNew () {
-
-  }
-
-  showCompleted () {
 
   }
 
@@ -70,11 +54,11 @@ class TodoStore {
 
   }
 
-  undo () {
+  toggleComplete () {
 
   }
 
-  redo () {
+  toggleAllComplete () {
 
   }
 

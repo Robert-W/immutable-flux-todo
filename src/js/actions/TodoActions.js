@@ -2,6 +2,14 @@ import alt from 'js/alt';
 
 class TodoActions {
 
+  undo () {
+
+  }
+
+  redo () {
+
+  }
+
   addTodo () {
 
   }
@@ -10,35 +18,11 @@ class TodoActions {
 
   }
 
+  setFilter () {
+
+  }
+
   removeTodo () {
-
-  }
-
-  markTodoNew () {
-
-  }
-
-  markTodoComplete () {
-
-  }
-
-  markAllNew () {
-
-  }
-
-  markAllCompleted () {
-
-  }
-
-  showAll () {
-
-  }
-
-  showNew () {
-
-  }
-
-  showCompleted () {
 
   }
 
@@ -46,11 +30,11 @@ class TodoActions {
 
   }
 
-  undo () {
+  toggleComplete () {
 
   }
 
-  redo () {
+  toggleAllComplete () {
 
   }
 
