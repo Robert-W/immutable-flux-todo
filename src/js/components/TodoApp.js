@@ -1,6 +1,6 @@
+import TodoItemList from 'components/TodoItemList';
 import StatusBar from 'components/StatusBar';
 import TodoInput from 'components/TodoInput';
-import TodoItem from 'components/TodoItem';
 import TodoStore from 'stores/TodoStore';
 import React from 'react';
 
@@ -16,7 +16,7 @@ export default class App extends React.Component {
   }
 
   storeUpdated () {
-    console.log('store updated');
+    this.setState(getAppState());
   }
 
   render () {
@@ -25,7 +25,7 @@ export default class App extends React.Component {
         <header className='todo-app-header'>todo</header>
         <section className='todo-notepad'>
           <TodoInput />
-          <TodoItem />
+          <TodoItemList todos={this.state.todos} />
           <StatusBar />
         </section>
         <footer className='todo-app-footer'>

@@ -100,6 +100,7 @@ input
     width 30px
   & .icon-checkmark
     fill $lightGray
+    display none
     height 15px
   & .edit-item
     font-weight 200
@@ -107,15 +108,17 @@ input
   & .icon-close
     visibility hidden
     fill $closeFill
+    transition none
   &:hover .icon-close
     visibility visible
   &:hover .icon-close:hover
     fill darken($closeFill, 20)
-  &.active
+  &.complete
     & .circle
       border 1px solid darken($lightGray, 25)
     & .icon-checkmark
       fill darken($checkmarkFill, 5)
+      display block
     & .edit-item
       text-decoration line-through
       color $lightGray

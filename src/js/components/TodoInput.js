@@ -1,3 +1,4 @@
+import TodoActions from 'actions/TodoActions';
 import React from 'react';
 
 let downArrowSVG = '<use xlink:href="#icon-arrow" />';
@@ -10,7 +11,7 @@ export default class TodoInput extends React.Component {
 
     if (value !== '') {
       evt.target.reset();
-      console.log(value);
+      TodoActions.addTodo(value);
     }
   }
 

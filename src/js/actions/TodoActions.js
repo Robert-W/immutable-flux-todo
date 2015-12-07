@@ -10,12 +10,12 @@ class TodoActions {
 
   }
 
-  addTodo () {
-
+  addTodo (todoText) {
+    this.dispatch(todoText);
   }
 
-  editTodo () {
-
+  editTodo (id, newText) {
+    this.dispatch({ id: id, text: newText });
   }
 
   setFilter () {
@@ -30,8 +30,8 @@ class TodoActions {
 
   }
 
-  toggleComplete () {
-
+  toggleComplete (id, completeStatus) {
+    this.dispatch({ id: id, complete: completeStatus });
   }
 
   toggleAllComplete () {
