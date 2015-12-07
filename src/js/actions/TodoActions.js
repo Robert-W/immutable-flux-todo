@@ -34,8 +34,8 @@ class TodoActions {
     this.dispatch({ id: id, complete: completeStatus });
   }
 
-  toggleAllComplete () {
-
+  toggleAllComplete (complete) {
+    this.dispatch(complete);
   }
 
 }

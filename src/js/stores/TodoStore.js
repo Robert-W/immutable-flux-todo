@@ -1,19 +1,23 @@
 import TodoActions from 'actions/TodoActions';
-//- TODO: Use OrderedMap, and Record, check here:
-//- https://github.com/MandarinConLaBarba/flux-immutable-todomvc/blob/master/js/stores/TodoStore.js
-import {List, Map} from 'immutable';
+import {OrderedMap, Record} from 'immutable';
 import KEYS from 'js/constants';
 import alt from 'js/alt';
 
 //- Crappy UUID Generator, but it works for this demo
 let uuid = 0;
 let uuidGenerator = () => (++uuid).toString();
+//- Create a reusable record for the todos
+let TodoRecord = Record({
+  id: null,
+  text: '',
+  complete: false
+});
 
 class TodoStore {
 
   constructor () {
     // Set store defaults
-    this.todos = new List();
+    this.todos = OrderedMap();
     this.filter = '';
 
     // Bind events for this.emit from the actions
@@ -39,12 +43,8 @@ class TodoStore {
   }
 
   addTodo (text) {
-    let todo = {};
-    todo[KEYS.TODO_ID] = uuidGenerator();
-    todo[KEYS.TODO_COMPLETE] = false;
-    todo[KEYS.TODO_TEXT] = text;
-
-    this.todos = this.todos.push(new Map(todo));
+    let id = uuidGenerator();
+    this.todos = this.todos.set(id, new TodoRecord({ id: id, text: text, complete: false }));
   }
 
   editTodo (payload) {
@@ -70,17 +70,13 @@ class TodoStore {
   }
 
   toggleComplete (payload) {
-    let index = this.todos.findIndex(todo => todo.get(KEYS.TODO_ID) === payload.id);
-    //- Update the todo if found
-    if (index > -1) {
-      this.todos = this.todos.update(0, todoItem => {
-        return todoItem.set(KEYS.TODO_COMPLETE, payload.complete);
-      });
-    }
+    this.todos = this.todos.set(payload.id, this.todos.get(payload.id).merge(payload));
   }
 
-  toggleAllComplete () {
-
+  toggleAllComplete (complete) {
+    this.todos = this.todos.map(todoItem => {
+      return todoItem.set(KEYS.TODO_COMPLETE, complete);
+    });
   }
 
 }

@@ -1,4 +1,5 @@
 import TodoItem from 'components/TodoItem';
+import KEYS from 'js/constants';
 import React from 'react';
 
 export default class TodoItemList extends React.Component {
@@ -10,7 +11,13 @@ export default class TodoItemList extends React.Component {
   }
 
   render () {
-    let todoItems = this.renderTodoItems(this.props.todos);
+    let todos = this.props.todos;
+    let todoItems = [];
+
+    todos.forEach(todo => {
+      todoItems.push(<TodoItem key={todo.get(KEYS.TODO_ID)} todo={todo} />);
+    });
+
     return (
       <div className='todo-item-list'>
         {todoItems}
