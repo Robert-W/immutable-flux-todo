@@ -48,13 +48,7 @@ class TodoStore {
   }
 
   editTodo (payload) {
-    let index = this.todos.findIndex(todo => todo.get(KEYS.TODO_ID) === payload.id);
-    //- Update the todo if found
-    if (index > -1) {
-      this.todos = this.todos.update(0, todoItem => {
-        return todoItem.set(KEYS.TODO_TEXT, payload.text);
-      });
-    }
+    this.todos = this.todos.set(payload.id, this.todos.get(payload.id).merge(payload));
   }
 
   setFilter () {
@@ -74,9 +68,7 @@ class TodoStore {
   }
 
   toggleAllComplete (complete) {
-    this.todos = this.todos.map(todoItem => {
-      return todoItem.set(KEYS.TODO_COMPLETE, complete);
-    });
+    this.todos = this.todos.map(todoItem => todoItem.set(KEYS.TODO_COMPLETE, complete));
   }
 
 }

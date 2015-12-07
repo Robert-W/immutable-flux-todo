@@ -4,12 +4,6 @@ import React from 'react';
 
 export default class TodoItemList extends React.Component {
 
-  renderTodoItems (todos) {
-    return !todos ? null : todos.map((todo, index) => {
-      return <TodoItem key={index} todo={todo} />;
-    });
-  }
-
   render () {
     let todos = this.props.todos;
     let todoItems = [];
