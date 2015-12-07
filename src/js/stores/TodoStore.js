@@ -1,4 +1,6 @@
 import TodoActions from 'actions/TodoActions';
+//- TODO: Use OrderedMap, and Record, check here:
+//- https://github.com/MandarinConLaBarba/flux-immutable-todomvc/blob/master/js/stores/TodoStore.js
 import {List, Map} from 'immutable';
 import KEYS from 'js/constants';
 import alt from 'js/alt';
