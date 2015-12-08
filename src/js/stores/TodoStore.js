@@ -74,14 +74,17 @@ class TodoStore {
 
   editTodo (payload) {
     this.todos = this.todos.set(payload.id, this.todos.get(payload.id).merge(payload));
+    saveHistory();
   }
 
   setFilter (filter) {
     this.filter = filter;
+    saveHistory();
   }
 
   removeTodo (id) {
     this.todos = this.todos.delete(id);
+    saveHistory();
   }
 
   clearCompleted () {
@@ -91,14 +94,17 @@ class TodoStore {
         this.todos = this.todos.delete(todoItem.get(KEYS.TODO_ID));
       }
     });
+    saveHistory();
   }
 
   toggleComplete (payload) {
     this.todos = this.todos.set(payload.id, this.todos.get(payload.id).merge(payload));
+    saveHistory();
   }
 
   toggleAllComplete (complete) {
     this.todos = this.todos.map(todoItem => todoItem.set(KEYS.TODO_COMPLETE, complete));
+    saveHistory();
   }
 
 }
