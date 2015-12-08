@@ -3,11 +3,11 @@ import alt from 'js/alt';
 class TodoActions {
 
   undo () {
-
+    this.dispatch();
   }
 
   redo () {
-
+    this.dispatch();
   }
 
   addTodo (todoText) {
@@ -18,16 +18,16 @@ class TodoActions {
     this.dispatch({ id: id, text: newText });
   }
 
-  setFilter () {
-
+  setFilter (filter) {
+    this.dispatch(filter);
   }
 
-  removeTodo () {
-
+  removeTodo (id) {
+    this.dispatch(id);
   }
 
   clearCompleted () {
-
+    this.dispatch();
   }
 
   toggleComplete (id, completeStatus) {

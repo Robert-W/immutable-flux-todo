@@ -3,7 +3,7 @@ $checkmarkFill = #00ffff
 $footerFontColor = #888
 $darkFontColor = #777
 $closeFill = #ff1744
-$rowEmHeight = 25px
+$rowEmHeight = 23px
 $lightGray = #ddd
 $downFill = #eee
 
@@ -78,7 +78,6 @@ input
   width 100%
   & .new-todo
     position relative
-    font-size 22px
     height 100%
     width 100%
   & .icon-down-arrow
@@ -104,7 +103,7 @@ input
     height 15px
   & .edit-item
     font-weight 200
-    font-size 20px
+    font-size 18px
   & .icon-close
     visibility hidden
     fill $closeFill
@@ -154,6 +153,8 @@ input
   & .filter-button
     padding 10px 15px
     margin auto 15px
+    &.active
+      box-shadow 0 0 5px darken($darkGrayShadow, 20)
   & .icon-previous
     transform rotate(90deg)
     fill $footerFontColor

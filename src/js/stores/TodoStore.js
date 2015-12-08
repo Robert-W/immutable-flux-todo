@@ -18,7 +18,7 @@ class TodoStore {
   constructor () {
     // Set store defaults
     this.todos = OrderedMap();
-    this.filter = '';
+    this.filter = KEYS.FILTER_ALL;
 
     // Bind events for this.emit from the actions
     this.bindListeners({
@@ -51,16 +51,21 @@ class TodoStore {
     this.todos = this.todos.set(payload.id, this.todos.get(payload.id).merge(payload));
   }
 
-  setFilter () {
-
+  setFilter (filter) {
+    this.filter = filter;
   }
 
-  removeTodo () {
-
+  removeTodo (id) {
+    this.todos = this.todos.delete(id);
   }
 
   clearCompleted () {
-
+    var todos = this.todos.toArray();
+    todos.forEach(todoItem => {
+      if (todoItem.get(KEYS.TODO_COMPLETE)) {
+        this.todos = this.todos.delete(todoItem.get(KEYS.TODO_ID));
+      }
+    });
   }
 
   toggleComplete (payload) {
