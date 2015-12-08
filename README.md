@@ -1,11 +1,8 @@
 # immutable-flux-todo
 Simple Todo App using Flux with ImmutableJS and React
 
-#### Still Under Construction, Items Remaining
+#### Items Remaining
 * Add History Panel for time travel functionality
-* Add edit functionality to todo
-* Add undo
-* Add redo
 
 ### Getting Started
 

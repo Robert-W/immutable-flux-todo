@@ -56,7 +56,12 @@ export default class MuiButton extends React.Component {
 
   render () {
     return (
-      <button onClick={this.props.onClick || null} className={this.props.className || ''} style={buttonStyles}>
+      <button
+        onClick={this.props.onClick || null}
+        className={this.props.className || ''}
+        style={buttonStyles}
+        {...this.props}
+      >
         <span ref='wrapper' style={muiClickStyle(this.props.shape)} onClick={::this.animate}>
           {this.state.ripples}
         </span>

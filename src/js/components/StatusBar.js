@@ -19,7 +19,7 @@ export default class StatusBar extends React.Component {
     return (
       <div className='status-bar flex-row'>
         <div className='remaining-count corner-item pointer'>{this.props.count} item remaining</div>
-        <MuiButton className='state-button pointer'>
+        <MuiButton onClick={TodoActions.undo} className='state-button pointer' title='Undo'>
           <svg className='svg-icon icon-previous' dangerouslySetInnerHTML={{ __html: arrowSVG }} />
         </MuiButton>
         <div className='filters'>
@@ -36,7 +36,7 @@ export default class StatusBar extends React.Component {
             Completed
           </MuiButton>
         </div>
-        <MuiButton className='state-button pointer'>
+        <MuiButton onClick={TodoActions.redo} className='state-button pointer' title='Redo'>
           <svg className='svg-icon icon-next' dangerouslySetInnerHTML={{ __html: arrowSVG }} />
         </MuiButton>
         <MuiButton onClick={this.clearCompleted} className='clear-button corner-item pointer'>Clear completed</MuiButton>

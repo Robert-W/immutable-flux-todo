@@ -3,8 +3,12 @@ import {OrderedMap, Record} from 'immutable';
 import KEYS from 'js/constants';
 import alt from 'js/alt';
 
+let history = [],
+    historyIndex,
+    todoStore,
+    uuid = 0;
+
 //- Crappy UUID Generator, but it works for this demo
-let uuid = 0;
 let uuidGenerator = () => (++uuid).toString();
 //- Create a reusable record for the todos
 let TodoRecord = Record({
@@ -12,6 +16,12 @@ let TodoRecord = Record({
   text: '',
   complete: false
 });
+
+//- History Helpers
+let saveHistory = function saveHistory () {
+  history.push(todoStore.getState());
+  historyIndex = history.length - 1;
+};
 
 class TodoStore {
 
@@ -34,17 +44,32 @@ class TodoStore {
     });
   }
 
-  undo () {
+  //- Internal Helper Functions
 
+
+  //- TodoActions
+  undo () {
+    --historyIndex;
+    if (historyIndex < 0) { historyIndex = 0; return; }
+    //- Set the state to the appropriate history
+    let state = history[historyIndex];
+    this.todos = state.todos;
+    this.filter = state.filter;
   }
 
   redo () {
-
+    ++historyIndex;
+    if (historyIndex >= history.length) { historyIndex = history.length - 1; return; }
+    //- Set the state to the appropriate history
+    let state = history[historyIndex];
+    this.todos = state.todos;
+    this.filter = state.filter;
   }
 
   addTodo (text) {
     let id = uuidGenerator();
     this.todos = this.todos.set(id, new TodoRecord({ id: id, text: text, complete: false }));
+    saveHistory();
   }
 
   editTodo (payload) {
@@ -78,5 +103,8 @@ class TodoStore {
 
 }
 
-const todoStore = alt.createStore(TodoStore, 'TodoStore');
+todoStore = alt.createStore(TodoStore, 'TodoStore');
+//- Save the default history
+saveHistory();
+
 export { todoStore as default };

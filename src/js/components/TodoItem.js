@@ -17,6 +17,11 @@ export default class TodoItem extends React.Component {
     TodoActions.removeTodo(todo.get(KEYS.TODO_ID));
   }
 
+  editTodo (evt) {
+    let todo = this.props.todo;
+    TodoActions.editTodo(todo.get(KEYS.TODO_ID), evt.target.value);
+  }
+
   render () {
     return (
       <div className={'todo-edit-item flex-row' + (this.props.todo.get(KEYS.TODO_COMPLETE) ? ' complete' : '')}>
@@ -25,7 +30,10 @@ export default class TodoItem extends React.Component {
             <svg className='svg-icon icon-checkmark pointer' dangerouslySetInnerHTML={{ __html: checkmarkSVG }} />
           </div>
         </div>
-        <input className='edit-item' defaultValue={this.props.todo.get(KEYS.TODO_TEXT)} />
+        <input disabled={this.props.todo.get(KEYS.TODO_COMPLETE)}
+          className='edit-item'
+          value={this.props.todo.get(KEYS.TODO_TEXT)}
+          onChange={::this.editTodo} />
         <div onClick={::this.deleteTodo} className='svg-icon-container'>
           <svg className='svg-icon icon-close pointer' dangerouslySetInnerHTML={{ __html: closeSVG }} />
         </div>
