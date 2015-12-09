@@ -33,7 +33,7 @@ export default class App extends React.Component {
         <section className='todo-notepad'>
           <TodoInput />
           <TodoItemList todos={this.state.todos} filter={this.state.filter} />
-          <StatusBar filter={this.state.filter} count={this.countRemaining(this.state.todos)} />
+          <StatusBar size={this.state.todos.size} filter={this.state.filter} remaining={this.countRemaining(this.state.todos)} />
         </section>
         <footer className='todo-app-footer'>
           <div>Built by: <a href='https://github.com/Robert-W'>robby winterbottom</a></div>
