@@ -1,8 +1,0 @@
-{
-  "name": "immutable-flux-todo",
-  "dependencies": {
-    "immutable": "~3.7.5",
-    "alt": "~0.17.8",
-    "react": "~0.14.3"
-  }
-}
