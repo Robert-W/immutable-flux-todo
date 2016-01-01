@@ -7,14 +7,6 @@ let arrowSVG = '<use xlink:href="#icon-arrow" />';
 
 export default class StatusBar extends React.Component {
 
-  clearCompleted () {
-    TodoActions.clearCompleted();
-  }
-
-  setFilter (filter) {
-    TodoActions.setFilter(filter);
-  }
-
   render () {
     return (
       <div className={`status-bar flex-row${this.props.size === 0 ? ' hidden' : ''}`}>
@@ -23,15 +15,15 @@ export default class StatusBar extends React.Component {
           <svg className='svg-icon icon-previous' dangerouslySetInnerHTML={{ __html: arrowSVG }} />
         </MuiButton>
         <div className='filters'>
-          <MuiButton onClick={this.setFilter.bind(this, KEYS.FILTER_ALL)}
+          <MuiButton onClick={TodoActions.setFilter.bind(this, KEYS.FILTER_ALL)}
             className={`filter-button pointer${this.props.filter === KEYS.FILTER_ALL ? ' active' : ''}`}>
             All
           </MuiButton>
-          <MuiButton onClick={this.setFilter.bind(this, KEYS.FILTER_NEW)}
+          <MuiButton onClick={TodoActions.setFilter.bind(this, KEYS.FILTER_NEW)}
             className={`filter-button pointer${this.props.filter === KEYS.FILTER_NEW ? ' active' : ''}`}>
             New
           </MuiButton>
-          <MuiButton onClick={this.setFilter.bind(this, KEYS.FILTER_COMPLETED)}
+          <MuiButton onClick={TodoActions.setFilter.bind(this, KEYS.FILTER_COMPLETED)}
             className={`filter-button pointer${this.props.filter === KEYS.FILTER_COMPLETED ? ' active' : ''}`}>
             Completed
           </MuiButton>
@@ -39,7 +31,7 @@ export default class StatusBar extends React.Component {
         <MuiButton onClick={TodoActions.redo} className='state-button pointer' title='Redo'>
           <svg className='svg-icon icon-next' dangerouslySetInnerHTML={{ __html: arrowSVG }} />
         </MuiButton>
-        <MuiButton onClick={this.clearCompleted} className='clear-button corner-item pointer'>Clear completed</MuiButton>
+        <MuiButton onClick={TodoActions.clearCompleted} className='clear-button corner-item pointer'>Clear completed</MuiButton>
       </div>
     );
   }
